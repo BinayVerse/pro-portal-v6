@@ -85,7 +85,7 @@ const plans = [
     description: 'Perfect for individuals and small teams',
     price: 29,
     period: 'month',
-    cta: 'Start Free Trial',
+    cta: 'Get Started',
     popular: false,
     features: [
       'Up to 100 artefacts',
@@ -101,7 +101,7 @@ const plans = [
     description: 'Best for growing businesses',
     price: 99,
     period: 'month',
-    cta: 'Start Free Trial',
+    cta: 'Get Started',
     popular: true,
     features: [
       'Up to 1,000 artefacts',
