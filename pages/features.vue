@@ -81,13 +81,13 @@
               <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="flex items-center space-x-3">
                   <div class="w-8 h-8 bg-red-500/20 rounded flex items-center justify-center">
-                    <UIcon name="heroicons:artefacts-text" class="w-4 h-4 text-red-400" />
+                    <UIcon name="mdi:file-pdf-box" class="w-4 h-4 text-red-400" />
                   </div>
                   <span class="text-gray-300">PDF</span>
                 </div>
                 <div class="flex items-center space-x-3">
                   <div class="w-8 h-8 bg-blue-500/20 rounded flex items-center justify-center">
-                    <UIcon name="heroicons:artefacts" class="w-4 h-4 text-blue-400" />
+                    <UIcon name="mdi:text-box-outline" class="w-4 h-4 text-blue-400" />
                   </div>
                   <span class="text-gray-300">DOC</span>
                 </div>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="flex items-center space-x-3">
                   <div class="w-8 h-8 bg-yellow-500/20 rounded flex items-center justify-center">
-                    <UIcon name="heroicons:artefacts-text" class="w-4 h-4 text-yellow-400" />
+                    <UIcon name="mdi:text-recognition" class="w-4 h-4 text-yellow-400" />
                   </div>
                   <span class="text-gray-300">TXT</span>
                 </div>
