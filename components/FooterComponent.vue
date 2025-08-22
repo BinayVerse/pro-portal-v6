@@ -16,17 +16,6 @@
             Transform your artefacts into intelligent conversations with AI-powered artefact
             chatting platform.
           </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <UIcon name="i-simple-icons-twitter" class="w-5 h-5" />
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <UIcon name="i-simple-icons-linkedin" class="w-5 h-5" />
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <UIcon name="i-simple-icons-github" class="w-5 h-5" />
-            </a>
-          </div>
         </div>
 
         <!-- Product -->
@@ -130,7 +119,7 @@
             </li>
             <li>
               <a
-                href="mailto:support@provento.ai"
+                href="mailto:contact@provento.ai"
                 class="text-gray-400 hover:text-white transition-colors"
                 >Contact Support</a
               >
@@ -159,14 +148,20 @@
           © {{ currentYear }} Provento.ai. All rights reserved.
         </div>
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm"
-            >Privacy Policy</a
+          <NuxtLink
+            to="/privacy-policy"
+            class="text-gray-400 hover:text-white transition-colors text-sm"
+            >Privacy Policy</NuxtLink
           >
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm"
-            >Terms of Service</a
+          <NuxtLink
+            to="/terms-of-service"
+            class="text-gray-400 hover:text-white transition-colors text-sm"
+            >Terms of Service</NuxtLink
           >
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm"
-            >Cookie Policy</a
+          <NuxtLink
+            to="/cookie-policy"
+            class="text-gray-400 hover:text-white transition-colors text-sm"
+            >Cookie Policy</NuxtLink
           >
         </div>
       </div>

@@ -31,8 +31,13 @@
               <h3 class="text-2xl font-bold text-white mb-2">{{ plan.name }}</h3>
               <p class="text-gray-400 mb-4">{{ plan.description }}</p>
               <div class="mb-4">
-                <span class="text-4xl font-bold text-white">${{ plan.price }}</span>
-                <span class="text-gray-400">/{{ plan.period }}</span>
+                <span class="text-4xl font-bold text-white">
+                  <template v-if="plan.price === 'Custom'">
+                    {{ plan.price }}
+                  </template>
+                  <template v-else> ${{ plan.price }} </template>
+                </span>
+                <span v-if="plan.period" class="text-gray-400">/{{ plan.period }}</span>
               </div>
               <NuxtLink to="/signup" class="btn-primary w-full">{{ plan.cta }}</NuxtLink>
             </div>
@@ -78,7 +83,7 @@ const plans = [
     description: 'Perfect for individuals and small teams',
     price: 29,
     period: 'month',
-    cta: 'Start Free Trial',
+    cta: 'Get Started',
     popular: false,
     features: [
       'Up to 100 artefacts',
@@ -94,7 +99,7 @@ const plans = [
     description: 'Best for growing businesses',
     price: 99,
     period: 'month',
-    cta: 'Start Free Trial',
+    cta: 'Get Started',
     popular: true,
     features: [
       'Up to 1,000 artefacts',
@@ -136,8 +141,9 @@ const faqs = [
   },
   {
     id: 2,
-    question: 'Is there a free trial?',
-    answer: 'Yes, all paid plans come with a 14-day free trial. No credit card required to start.',
+    question: 'How do I get started?',
+    answer:
+      'Simply choose your plan and click "Get Started" to begin using our platform immediately.',
   },
   {
     id: 3,
