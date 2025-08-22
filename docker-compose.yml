@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   stage:
-    image: admin-01:latest
+    image: nuxt-app:latest
     ports:
       - '3000:80'
     env_file:

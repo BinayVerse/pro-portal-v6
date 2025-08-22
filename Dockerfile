@@ -1,23 +1,33 @@
-# Stage 1: Build the app
-FROM node:20-alpine AS builder
+# Stage 1: Build
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+# Install dependencies
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
+# Copy source and build
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with Nginx
-FROM nginx:alpine
+# Stage 2: Run
+FROM node:22-alpine
 
-# Copy built files to nginx html directory
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Copy default nginx config (optional, useful for SPA routing)
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+# Copy only what we need for runtime
+COPY --from=builder /app/.output ./.output
+COPY --from=builder /app/package*.json ./
+
+# Install only production deps
+RUN npm install --omit=dev --legacy-peer-deps
+
+ENV NUXT_PUBLIC_APP_URL=http://localhost:3000
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["nginx", "-g", "daemon off;"]
+# Nuxt 3 correct entrypoint
+CMD ["node", ".output/server/index.mjs"]
