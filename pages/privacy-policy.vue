@@ -5,8 +5,9 @@ definePageMeta({
 </script>
 
 <template>
-  <main id="main" class="mb-16">
-    <section id="content" class="pt-12">
+  <main id="main">
+    <section class="pt-16 pb-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
       <h1 class="font-semibold text-3xl text-white">
         Privacy Policy
       </h1>
@@ -395,11 +396,12 @@ definePageMeta({
       <p class="text-gray-300">If you have any questions about this Privacy Policy, You can contact us:</p>
       <ul class="text-gray-300">
         <li>
-          Email to: <NuxtLink href="mailto:support@provento.ai" class="text-primary-400 hover:text-primary-300 underline">
-            support@provento.ai
+          Email to: <NuxtLink href="mailto:contact@provento.ai" class="text-primary-400 hover:text-primary-300 underline">
+            contact@provento.ai
           </NuxtLink>
         </li>
       </ul>
+      </div>
     </section>
   </main>
 </template>
