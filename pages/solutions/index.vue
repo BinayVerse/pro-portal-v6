@@ -5,11 +5,11 @@
         <div class="text-center mb-16">
           <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
             Transforming Industries with
-            <span class="text-primary-400">AI-Powered Document Intelligence</span>
+            <span class="text-primary-400">AI-Powered Artefact Intelligence</span>
           </h1>
           <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-            Discover how Provento.ai transforms document workflows across different industries,
-            helping organizations streamline document workflow, enhance productivity, and make
+            Discover how Provento.ai transforms artefact workflows across different industries,
+            helping organizations streamline artefact workflow, enhance productivity, and make
             data-driven decisions faster than ever before.
           </p>
         </div>
