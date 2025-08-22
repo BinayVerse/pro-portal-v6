@@ -125,9 +125,6 @@
             <NuxtLink to="/book-meeting" class="btn-primary text-lg px-8 py-4">
               Book a Demo
             </NuxtLink>
-            <NuxtLink to="/signup" class="btn-outline text-lg px-8 py-4">
-              Start Free Trial
-            </NuxtLink>
           </div>
         </div>
       </div>
