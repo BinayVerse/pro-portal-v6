@@ -39,6 +39,7 @@ docker-compose logs -f web
 ```
 
 The application will be available at:
+
 - **Application**: http://localhost:3000
 - **With Nginx**: http://localhost
 
@@ -199,27 +200,30 @@ docker run --rm -v provento_postgres_data:/data -v $(pwd):/backup alpine tar czf
 ### Common Issues
 
 1. **Port already in use**
+
    ```bash
    # Check what's using the port
    sudo lsof -i :3000
-   
+
    # Kill the process or change ports in docker-compose.yml
    ```
 
 2. **Permission denied**
+
    ```bash
    # Fix Docker permissions
    sudo usermod -aG docker $USER
-   
+
    # Re-login or run
    newgrp docker
    ```
 
 3. **Build failures**
+
    ```bash
    # Clear Docker cache
    docker builder prune -a
-   
+
    # Rebuild without cache
    docker-compose build --no-cache
    ```
@@ -281,6 +285,7 @@ web:
 ## Support
 
 For deployment issues:
+
 - Check logs: `docker-compose logs -f`
 - Verify configuration: `docker-compose config`
 - Contact: support@provento.ai
