@@ -143,8 +143,8 @@ const faqs = [
   },
   {
     id: 2,
-    question: 'Is there a free trial?',
-    answer: 'Yes, all paid plans come with a 14-day free trial. No credit card required to start.',
+    question: 'How do I get started?',
+    answer: 'Simply choose your plan and click "Get Started" to begin using our platform immediately.',
   },
   {
     id: 3,
