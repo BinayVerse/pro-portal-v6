@@ -141,7 +141,7 @@
       <p class="text-gray-400 mb-8 text-sm">
         Available solutions: {{ Object.keys(solutions).join(', ') }}
       </p>
-      <NuxtLink to="/solutions" class="btn-primary"> View All Solutions </NuxtLink>
+      <NuxtLink to="/solutions" class="btn-primary"> Back to Solutions </NuxtLink>
     </div>
   </div>
 </template>
