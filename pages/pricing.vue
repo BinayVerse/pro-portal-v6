@@ -31,8 +31,15 @@
               <h3 class="text-2xl font-bold text-white mb-2">{{ plan.name }}</h3>
               <p class="text-gray-400 mb-4">{{ plan.description }}</p>
               <div class="mb-4">
-                <span class="text-4xl font-bold text-white">${{ plan.price }}</span>
-                <span class="text-gray-400">/{{ plan.period }}</span>
+                <span class="text-4xl font-bold text-white">
+                  <template v-if="plan.price === 'Custom'">
+                    {{ plan.price }}
+                  </template>
+                  <template v-else>
+                    ${{ plan.price }}
+                  </template>
+                </span>
+                <span v-if="plan.period" class="text-gray-400">/{{ plan.period }}</span>
               </div>
               <NuxtLink to="/signup" class="btn-primary w-full">{{ plan.cta }}</NuxtLink>
             </div>
