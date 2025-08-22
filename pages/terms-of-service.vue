@@ -5,8 +5,9 @@ definePageMeta({
 </script>
 
 <template>
-  <main id="main" class="mb-16">
-    <section id="content" class="pt-12">
+  <main id="main">
+    <section class="pt-16 pb-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
       <h1 class="font-semibold text-3xl text-white">
         Terms of Service
       </h1>
@@ -132,8 +133,8 @@ definePageMeta({
       </p>
       <ul class="text-gray-300 mt-4">
         <li>
-          Email: <NuxtLink href="mailto:support@provento.ai" class="text-primary-400 hover:text-primary-300 underline">
-            support@provento.ai
+          Email: <NuxtLink href="mailto:contact@provento.ai" class="text-primary-400 hover:text-primary-300 underline">
+            contact@provento.ai
           </NuxtLink>
         </li>
         <li class="mt-2">
@@ -147,6 +148,7 @@ definePageMeta({
           regarding the use of our Service. If any provision of these Terms is found to be unenforceable, 
           the remaining provisions will remain in full force and effect.
         </p>
+      </div>
       </div>
     </section>
   </main>
