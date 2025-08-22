@@ -48,6 +48,25 @@ export default defineNuxtConfig({
     experimental: {
       wasm: true,
     },
+    storage: {
+      dev: {
+        driver: 'fs',
+        base: './.data'
+      }
+    }
+  },
+
+  // Router options to fix manifest issues
+  router: {
+    options: {
+      hashMode: false
+    }
+  },
+
+  // Experimental features to fix manifest conflicts
+  experimental: {
+    payloadExtraction: false,
+    writeEarlyHints: false
   },
 
   // App Config
