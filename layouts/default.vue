@@ -95,7 +95,7 @@
           <!-- Right side buttons -->
           <div class="flex items-center space-x-4">
             <NuxtLink to="/book-meeting" class="btn-outline hidden sm:inline-flex">
-              Book a Meeting
+              Book a Demo
             </NuxtLink>
             <NuxtLink
               to="/login"
@@ -133,7 +133,7 @@
             >
             <NuxtLink to="/faq" class="block text-gray-300 hover:text-white py-2">FAQ</NuxtLink>
             <NuxtLink to="/book-meeting" class="block text-gray-300 hover:text-white py-2"
-              >Book a Meeting</NuxtLink
+              >Book a Demo</NuxtLink
             >
             <NuxtLink to="/login" class="block text-gray-300 hover:text-white py-2">Login</NuxtLink>
             <NuxtLink to="/signup" class="btn-primary block text-center mt-3">Sign Up</NuxtLink>

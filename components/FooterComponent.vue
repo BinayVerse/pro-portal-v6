@@ -50,7 +50,7 @@
             </li>
             <li>
               <NuxtLink to="/book-meeting" class="text-gray-400 hover:text-white transition-colors"
-                >Book Demo</NuxtLink
+                >Book a Demo</NuxtLink
               >
             </li>
           </ul>
