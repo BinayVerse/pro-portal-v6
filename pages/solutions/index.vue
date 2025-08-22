@@ -17,17 +17,6 @@
         <!-- Filter Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-12">
           <button
-            @click="navigateTo('/solutions')"
-            class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-            :class="
-              selectedFilter === 'all'
-                ? 'bg-primary-500 text-white'
-                : 'bg-dark-800 text-gray-300 hover:bg-dark-700 hover:text-white'
-            "
-          >
-            All Industries
-          </button>
-          <button
             v-for="industry in industries"
             :key="industry.slug"
             @click="navigateTo(`/solutions/${industry.slug}`)"
