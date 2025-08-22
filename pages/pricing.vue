@@ -8,7 +8,7 @@
             <span class="text-primary-400">Pricing</span>
           </h1>
           <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-            Choose the plan that fits your needs. All plans include unlimited documents and 24/7
+            Choose the plan that fits your needs. All plans include unlimited artefacts and 24/7
             support.
           </p>
         </div>
@@ -81,7 +81,7 @@ const plans = [
     cta: 'Start Free Trial',
     popular: false,
     features: [
-      'Up to 100 documents',
+      'Up to 100 artefacts',
       '1,000 AI queries per month',
       'Basic integrations',
       'Email support',
@@ -97,7 +97,7 @@ const plans = [
     cta: 'Start Free Trial',
     popular: true,
     features: [
-      'Up to 1,000 documents',
+      'Up to 1,000 artefacts',
       '10,000 AI queries per month',
       'All integrations',
       'Priority support',
@@ -115,7 +115,7 @@ const plans = [
     cta: 'Contact Sales',
     popular: false,
     features: [
-      'Unlimited documents',
+      'Unlimited artefacts',
       'Unlimited AI queries',
       'All integrations',
       '24/7 dedicated support',
@@ -142,7 +142,7 @@ const faqs = [
   {
     id: 3,
     question: 'What file formats are supported?',
-    answer: 'We support PDF, Word, Excel, PowerPoint, CSV, and many other common document formats.',
+    answer: 'We support PDF, Word, Excel, PowerPoint, CSV, and many other common artefact formats.',
   },
   {
     id: 4,

@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   // App Config
   app: {
     head: {
-      title: 'VueDash - Modern Dashboard',
+      title: 'provento.ai - Your AI Partner for Smarter Interactions',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

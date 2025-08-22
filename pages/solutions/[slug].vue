@@ -4,12 +4,6 @@
       <div class="max-w-7xl mx-auto">
         <!-- Filter Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-12">
-          <NuxtLink
-            to="/solutions"
-            class="px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-dark-800 text-gray-300 hover:bg-dark-700 hover:text-white"
-          >
-            All Industries
-          </NuxtLink>
           <button
             v-for="industry in allIndustries"
             :key="industry.slug"
@@ -90,38 +84,6 @@
           </div>
         </div>
 
-        <!-- Success Story -->
-        <div class="bg-dark-800 rounded-xl p-8 border border-dark-700 mb-20">
-          <h2 class="text-2xl font-bold text-white text-center mb-8">Success Story</h2>
-          <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <blockquote class="text-gray-300 text-lg italic mb-6">
-                "{{ solution.testimonial.quote }}"
-              </blockquote>
-              <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
-                  <span class="text-white font-semibold">{{
-                    solution.testimonial.author
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')
-                  }}</span>
-                </div>
-                <div>
-                  <div class="text-white font-semibold">{{ solution.testimonial.author }}</div>
-                  <div class="text-gray-400 text-sm">{{ solution.testimonial.title }}</div>
-                </div>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-6">
-              <div v-for="stat in solution.stats" :key="stat.label" class="text-center">
-                <div class="text-3xl font-bold text-primary-400 mb-2">{{ stat.value }}</div>
-                <div class="text-gray-300 text-sm">{{ stat.label }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Key Features -->
         <div class="mb-20">
           <h2 class="text-2xl font-bold text-white text-center mb-8">
@@ -178,7 +140,7 @@
       <p class="text-gray-400 mb-8 text-sm">
         Available solutions: {{ Object.keys(solutions).join(', ') }}
       </p>
-      <NuxtLink to="/solutions" class="btn-primary"> View All Solutions </NuxtLink>
+      <NuxtLink to="/solutions" class="btn-primary"> Back to Solutions </NuxtLink>
     </div>
   </div>
 </template>
