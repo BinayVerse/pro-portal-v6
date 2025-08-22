@@ -119,7 +119,7 @@
             </li>
             <li>
               <a
-                href="mailto:support@provento.ai"
+                href="mailto:contact@provento.ai"
                 class="text-gray-400 hover:text-white transition-colors"
                 >Contact Support</a
               >
