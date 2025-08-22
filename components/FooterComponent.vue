@@ -16,17 +16,6 @@
             Transform your artefacts into intelligent conversations with AI-powered artefact
             chatting platform.
           </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <UIcon name="i-simple-icons-twitter" class="w-5 h-5" />
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <UIcon name="i-simple-icons-linkedin" class="w-5 h-5" />
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <UIcon name="i-simple-icons-github" class="w-5 h-5" />
-            </a>
-          </div>
         </div>
 
         <!-- Product -->
