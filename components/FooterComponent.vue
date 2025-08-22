@@ -148,14 +148,14 @@
           © {{ currentYear }} Provento.ai. All rights reserved.
         </div>
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm"
-            >Privacy Policy</a
+          <NuxtLink to="/privacy-policy" class="text-gray-400 hover:text-white transition-colors text-sm"
+            >Privacy Policy</NuxtLink
           >
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm"
-            >Terms of Service</a
+          <NuxtLink to="/terms-of-service" class="text-gray-400 hover:text-white transition-colors text-sm"
+            >Terms of Service</NuxtLink
           >
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm"
-            >Cookie Policy</a
+          <NuxtLink to="/cookie-policy" class="text-gray-400 hover:text-white transition-colors text-sm"
+            >Cookie Policy</NuxtLink
           >
         </div>
       </div>
