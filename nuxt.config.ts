@@ -51,22 +51,22 @@ export default defineNuxtConfig({
     storage: {
       dev: {
         driver: 'fs',
-        base: './.data'
-      }
-    }
+        base: './.data',
+      },
+    },
   },
 
   // Router options to fix manifest issues
   router: {
     options: {
-      hashMode: false
-    }
+      hashMode: false,
+    },
   },
 
   // Experimental features to fix manifest conflicts
   experimental: {
     payloadExtraction: false,
-    writeEarlyHints: false
+    writeEarlyHints: false,
   },
 
   // App Config

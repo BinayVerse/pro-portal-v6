@@ -35,9 +35,7 @@
                   <template v-if="plan.price === 'Custom'">
                     {{ plan.price }}
                   </template>
-                  <template v-else>
-                    ${{ plan.price }}
-                  </template>
+                  <template v-else> ${{ plan.price }} </template>
                 </span>
                 <span v-if="plan.period" class="text-gray-400">/{{ plan.period }}</span>
               </div>
@@ -144,7 +142,8 @@ const faqs = [
   {
     id: 2,
     question: 'How do I get started?',
-    answer: 'Simply choose your plan and click "Get Started" to begin using our platform immediately.',
+    answer:
+      'Simply choose your plan and click "Get Started" to begin using our platform immediately.',
   },
   {
     id: 3,
