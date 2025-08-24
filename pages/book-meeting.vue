@@ -58,13 +58,17 @@
           <!-- Demo Form -->
           <div class="card">
             <h2 class="text-2xl font-bold text-white mb-6">Schedule Your Demo</h2>
-            <UForm :schema="schema" :state="state" class="space-y-6" @submit="onSubmit">
+            <UForm
+              ref="formRef"
+              :schema="schema"
+              :state="state"
+              class="space-y-6"
+              @submit="onSubmit"
+              :validate-on="['blur', 'change', 'input']"
+            >
               <div class="grid grid-cols-2 gap-4">
-                <div class="form-field-wrapper">
-                  <UFormField
-                    name="firstName"
-                    :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
-                  >
+                <div class="">
+                  <UFormField name="firstName" :ui="{ error: 'mt-2 text-red-400 text-sm' }">
                     <label class="block text-sm font-medium text-gray-300 mb-2">First Name *</label>
                     <UInput
                       v-model="state.firstName"
@@ -72,23 +76,25 @@
                       inputClass="custom-input"
                     />
                   </UFormField>
+                  <!-- Manual error display for testing -->
+                  <div v-if="validationErrors.firstName" class="mt-2 text-red-400 text-sm">
+                    {{ validationErrors.firstName }}
+                  </div>
                 </div>
-                <div class="form-field-wrapper">
-                  <UFormField
-                    name="lastName"
-                    :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
-                  >
+                <div class="">
+                  <UFormField name="lastName" :ui="{ error: 'mt-2 text-red-400 text-sm' }">
                     <label class="block text-sm font-medium text-gray-300 mb-2">Last Name *</label>
                     <UInput v-model="state.lastName" placeholder="Doe" inputClass="custom-input" />
                   </UFormField>
+                  <!-- Manual error display for testing -->
+                  <div v-if="validationErrors.lastName" class="mt-2 text-red-400 text-sm">
+                    {{ validationErrors.lastName }}
+                  </div>
                 </div>
               </div>
 
               <div class="form-field-wrapper">
-                <UFormField
-                  name="email"
-                  :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
-                >
+                <UFormField name="email" :ui="{ error: 'mt-2 text-red-400 text-sm' }">
                   <label class="block text-sm font-medium text-gray-300 mb-2">Work Email *</label>
                   <UInput
                     v-model="state.email"
@@ -97,6 +103,10 @@
                     inputClass="custom-input"
                   />
                 </UFormField>
+                <!-- Manual error display for testing -->
+                <div v-if="validationErrors.email" class="mt-2 text-red-400 text-sm">
+                  {{ validationErrors.email }}
+                </div>
               </div>
 
               <div class="form-field-wrapper">
@@ -104,14 +114,16 @@
                   name="phone"
                   :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
                 >
-                  <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number *</label>
                   <LibVueTelInput
                     ref="phoneRef"
-                    :prop-phone="phoneModel"
+                    v-model="state.phone"
                     placeholder="Your phone number"
                     class="my-4"
+                    @update:phoneData="onPhoneDataChange"
+                    @validation="onPhoneValidation"
                   />
-                  <p class="text-xs text-gray-400 mt-1">NB: We'll use this for scheduling calls</p>
+                  <p class="text-xs text-gray-400 mt-1">We'll use this for scheduling calls</p>
                 </UFormField>
               </div>
 
@@ -127,6 +139,10 @@
                     inputClass="custom-input"
                   />
                 </UFormField>
+                <!-- Manual error display for testing -->
+                <div v-if="validationErrors.company" class="mt-2 text-red-400 text-sm">
+                  {{ validationErrors.company }}
+                </div>
               </div>
 
               <div class="form-field-wrapper">
@@ -134,13 +150,17 @@
                   name="jobTitle"
                   :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
                 >
-                  <label class="block text-sm font-medium text-gray-300 mb-2">Job Title</label>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">Job Title *</label>
                   <UInput
                     v-model="state.jobTitle"
                     placeholder="Your role"
                     inputClass="custom-input"
                   />
                 </UFormField>
+                <!-- Manual error display for testing -->
+                <div v-if="validationErrors.jobTitle" class="mt-2 text-red-400 text-sm">
+                  {{ validationErrors.jobTitle }}
+                </div>
               </div>
 
               <div class="form-field-wrapper">
@@ -148,15 +168,20 @@
                   name="companySize"
                   :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
                 >
-                  <label class="block text-sm font-medium text-gray-300 mb-2">Company Size</label>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">Company Size *</label>
                   <USelect
                     v-model="state.companySize"
                     :options="companySizeOptions"
                     value-attribute="value"
                     option-attribute="label"
+                    placeholder="Select company size"
                     selectClass="custom-select"
                   />
                 </UFormField>
+                <!-- Manual error display for testing -->
+                <div v-if="validationErrors.companySize" class="mt-2 text-red-400 text-sm">
+                  {{ validationErrors.companySize }}
+                </div>
               </div>
 
               <div class="form-field-wrapper">
@@ -165,16 +190,21 @@
                   :ui="{ container: 'space-y-0', error: 'mt-2 text-red-400 text-sm' }"
                 >
                   <label class="block text-sm font-medium text-gray-300 mb-2"
-                    >Primary Use Case</label
+                    >Primary Use Case *</label
                   >
                   <USelect
                     v-model="state.useCase"
                     :options="useCaseOptions"
                     value-attribute="value"
                     option-attribute="label"
+                    placeholder="Select use case"
                     selectClass="custom-select"
                   />
                 </UFormField>
+                <!-- Manual error display for testing -->
+                <div v-if="validationErrors.useCase" class="mt-2 text-red-400 text-sm">
+                  {{ validationErrors.useCase }}
+                </div>
               </div>
 
               <div class="form-field-wrapper">
@@ -266,11 +296,11 @@
               </p>
               <div class="space-y-3">
                 <a
-                  href="mailto:sales@provento.ai"
+                  href="mailto:contact@provento.ai"
                   class="flex items-center text-primary-400 hover:text-primary-300 transition-colors"
                 >
                   <UIcon name="i-heroicons-envelope" class="w-5 h-5 mr-3" />
-                  sales@provento.ai
+                  contact@provento.ai
                 </a>
                 <a
                   href="tel:+1-555-0123"
@@ -291,7 +321,7 @@
 <script setup lang="ts">
 import { useContactStore } from '~/stores/contact'
 import { z } from 'zod'
-import type { FormSubmitEvent } from '#ui/types'
+import type { FormError, FormSubmitEvent } from '#ui/types'
 
 definePageMeta({
   layout: 'main',
@@ -302,25 +332,39 @@ const contactStore = useContactStore()
 const loading = computed(() => contactStore.loading)
 const showSuccessModal = ref(false)
 
+// Form reference for manual validation
+const formRef = ref()
+
+// Add form errors state for better error display
+const formErrors = ref<Record<string, string[]>>({})
+
+// Manual validation state for debugging
+const validationErrors = ref<Record<string, string>>({})
+
 // Zod schema for form validation
 const schema = z.object({
   firstName: z.string().min(1, 'First name is required').max(50, 'First name too long'),
   lastName: z.string().min(1, 'Last name is required').max(50, 'Last name too long'),
   email: z.string().email('Invalid email address').max(255, 'Email too long'),
   company: z.string().min(1, 'Company name is required').max(255, 'Company name too long'),
-  jobTitle: z.string().max(255, 'Job title too long').optional(),
+  jobTitle: z.string().min(1, 'Job title is required').max(255, 'Job title too long'),
   companySize: z
-    .enum(['', '1-10', '11-50', '51-200', '201-1000', '1000+'], {
-      errorMap: () => ({ message: 'Please select a company size' }),
-    })
-    .optional(),
+    .string()
+    .min(1, 'Please select a company size')
+    .refine((val) => ['1-10', '11-50', '51-200', '201-1000', '1000+'].includes(val), {
+      message: 'Please select a valid company size',
+    }),
   useCase: z
-    .enum(['', 'legal', 'hr', 'finance', 'research', 'customer-support', 'other'], {
-      errorMap: () => ({ message: 'Please select a use case' }),
-    })
-    .optional(),
+    .string()
+    .min(1, 'Please select a use case')
+    .refine(
+      (val) => ['legal', 'hr', 'finance', 'research', 'customer-support', 'other'].includes(val),
+      {
+        message: 'Please select a valid use case',
+      },
+    ),
   message: z.string().max(1000, 'Message too long').optional(),
-  phone: z.string().optional(),
+  phone: z.string().min(1, 'Phone number is required').max(20, 'Phone number too long'),
 })
 
 type Schema = z.output<typeof schema>
@@ -338,12 +382,30 @@ const state = reactive({
 })
 
 // Phone number handling
-const phoneModel = ref('')
-const defaultCountry = ref('US')
+const phoneRef = ref()
+const phoneValidation = ref({ status: true, message: '' })
+
+// Phone event handlers
+function onPhoneDataChange(data: any) {
+  // Update the form state with the full international phone number (includes country code)
+  if (data.valid && data.number) {
+    // Use the full international number which includes country code (e.g., "+12345678900")
+    state.phone = data.number
+  } else if (data.formatted) {
+    // Fallback to formatted number if available
+    state.phone = data.formatted
+  } else {
+    // Clear phone if invalid
+    state.phone = ''
+  }
+}
+
+function onPhoneValidation(result: any) {
+  phoneValidation.value = result
+}
 
 // Options for selects
 const companySizeOptions = [
-  { value: '', label: 'Select company size' },
   { value: '1-10', label: '1-10 employees' },
   { value: '11-50', label: '11-50 employees' },
   { value: '51-200', label: '51-200 employees' },
@@ -352,7 +414,6 @@ const companySizeOptions = [
 ]
 
 const useCaseOptions = [
-  { value: '', label: 'Select use case' },
   { value: 'legal', label: 'Legal document analysis' },
   { value: 'hr', label: 'HR documentation' },
   { value: 'finance', label: 'Financial documents' },
@@ -371,6 +432,23 @@ const demoExpectations = [
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   try {
+    phoneRef.value?.handlePhoneValidation?.()
+    schema.parse(state) // Will throw if invalid
+  } catch (error: any) {
+    if (error.errors) {
+      const errors: Record<string, string> = {}
+      error.errors.forEach((err: any) => {
+        errors[err.path[0]] = err.message
+      })
+      validationErrors.value = errors
+    }
+    return
+  }
+
+  // if valid → clear errors and continue
+  validationErrors.value = {}
+
+  try {
     const domain = window.location.hostname
     const isProd = domain.includes('provento.ai') && !domain.includes('test')
     const isTest = domain.includes('test') || domain.includes('refactor')
@@ -380,7 +458,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       name: event.data.firstName,
       lastname: event.data.lastName,
       email: event.data.email,
-      phone: phoneModel.value || undefined,
+      phone: state.phone || undefined,
       company: event.data.company || undefined,
       jobTitle: event.data.jobTitle || undefined,
       companySize: event.data.companySize || undefined,
@@ -409,7 +487,15 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       message: '',
       phone: '',
     })
-    phoneModel.value = ''
+    if (phoneRef.value) {
+      phoneRef.value.resetPhoneField?.() || phoneRef.value?.setValue?.('')
+    }
+
+    // Reset phone component
+    if (phoneRef.value && phoneRef.value.resetPhoneField) {
+      phoneRef.value.resetPhoneField()
+    }
+    phoneValidation.value = { status: true, message: '' }
   } catch (error: any) {
     console.error('Demo submission error:', error)
     showNotification(
@@ -537,6 +623,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   background-color: #1e293b;
   transition: all 0.2s ease-in-out;
   box-shadow: none;
+  position: relative;
+  overflow: visible;
 }
 
 :deep(.vue-tel-input:hover) {
@@ -548,6 +636,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   border-color: #3b82f6;
   background-color: #1e293b;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Focused error state - maintain consistent border width */
+:deep(.vue-tel-input.errorState:focus-within) {
+  border-color: #ef4444 !important;
+  background-color: #1e293b;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
 }
 
 :deep(.vue-tel-input .vti__dropdown) {
@@ -602,6 +697,32 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 :deep(.vue-tel-input .vti__input:focus) {
   outline: none !important;
   box-shadow: none !important;
+}
+
+/* Ensure input is clickable and not blocked */
+:deep(.vue-tel-input .vti__input) {
+  pointer-events: all !important;
+  user-select: text !important;
+  cursor: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* Remove any potential overlays or blocking elements */
+:deep(.vue-tel-input::before),
+:deep(.vue-tel-input::after) {
+  display: none !important;
+}
+
+/* Ensure the phone input container is interactive */
+:deep(.vue-tel-input) {
+  pointer-events: all !important;
+}
+
+/* Fix any potential z-index issues */
+:deep(.vue-tel-input *) {
+  z-index: auto !important;
 }
 
 :deep(.vue-tel-input .vti__dropdown-arrow) {

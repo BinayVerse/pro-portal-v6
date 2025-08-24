@@ -19,33 +19,42 @@ export const useNotification = () => {
       timeout: options?.duration || 5000,
     }
 
+    let result
+
     switch (type) {
       case 'success':
-        return toast.add({
+        result = toast.add({
           ...toastConfig,
           color: 'green',
           icon: 'i-heroicons-check-circle',
         })
+        break
       case 'error':
-        return toast.add({
+        result = toast.add({
           ...toastConfig,
           color: 'red',
           icon: 'i-heroicons-x-circle',
         })
+        break
       case 'warning':
-        return toast.add({
+        result = toast.add({
           ...toastConfig,
           color: 'yellow',
           icon: 'i-heroicons-exclamation-triangle',
         })
+        break
       case 'info':
       default:
-        return toast.add({
+        result = toast.add({
           ...toastConfig,
           color: 'blue',
           icon: 'i-heroicons-information-circle',
         })
+        break
     }
+
+    console.log('✅ Toast added, result:', result)
+    return result
   }
 
   const showSuccess = (message: string, options?: ToastOptions) => {
