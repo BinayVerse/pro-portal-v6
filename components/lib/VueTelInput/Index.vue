@@ -174,7 +174,7 @@ function onCountryChanged(payload: PhoneCountry) {
   // }, 0)
 }
 
-function handlePhoneValidation() {
+function handlePhoneValidation(forceShow = false) {
   let result
 
   if (!phone.value) {
@@ -200,6 +200,11 @@ function handlePhoneValidation() {
     result = {
       status: true,
     }
+  }
+
+  // Force error display if requested (e.g., on form submit)
+  if (forceShow && !result.status) {
+    phoneErr.value = true
   }
 
   // Emit validation result to parent
@@ -352,6 +357,8 @@ defineExpose({
   phoneData,
   handlePhoneValidation,
   resetPhoneField,
+  phoneErr,
+  phoneErrMsg,
 })
 </script>
 
